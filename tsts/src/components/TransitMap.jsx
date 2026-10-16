@@ -19,6 +19,11 @@ import {
   Route,
 } from "lucide-react";
 import { mobilityByZone, assessDestination } from "../mobilityData.js";
+import {
+  DeviceLocationControls,
+  DeviceLocationMarker,
+  useDeviceLocation,
+} from "./DeviceLocation.jsx";
 import "leaflet/dist/leaflet.css";
 import "./TransitMap.css";
 
@@ -35,6 +40,8 @@ function MapViewport({
   resetKey,
   selectedZoneId,
   destinationsEnabled,
+  locationFocus,
+  locationFocusKey,
 }) {
   const map = useMap();
   const signature = zones
@@ -65,6 +72,20 @@ function MapViewport({
         // The detail panel changes the container width. Refresh Leaflet's size
         // before fitting so the selected zone stays centered in the visible map.
         map.invalidateSize({ pan: false });
+        if (locationFocus) {
+          const zoom =
+            locationFocus.accuracy > 50000
+              ? 5
+              : locationFocus.accuracy > 10000
+                ? 8
+                : locationFocus.accuracy > 1000
+                  ? 11
+                  : 14;
+          map.setView([locationFocus.lat, locationFocus.lng], zoom, {
+            animate: false,
+          });
+          return;
+        }
         map.fitBounds(bounds, {
           paddingTopLeft: compact ? [26, 38] : selected ? [38, 76] : [52, 62],
           paddingBottomRight: compact
@@ -84,7 +105,16 @@ function MapViewport({
       cancelAnimationFrame(frame);
       observer.disconnect();
     };
-  }, [map, signature, compact, resetKey, selectedZoneId, destinationsEnabled]); // Coordinates, rather than array identity, control viewport changes.
+  }, [
+    map,
+    signature,
+    compact,
+    resetKey,
+    selectedZoneId,
+    destinationsEnabled,
+    locationFocus,
+    locationFocusKey,
+  ]); // Coordinates, rather than array identity, control viewport changes.
 
   return null;
 }
@@ -280,6 +310,25 @@ export default function TransitMap({
   const [basemap, setBasemap] = useState("street");
   const [youthMode, setYouthMode] = useState(!compact);
   const [destinationsEnabled, setDestinationsEnabled] = useState(true);
+  const location = useDeviceLocation();
+  const pendingLocationFocus = useRef(false);
+  const [focusLocation, setFocusLocation] = useState(false);
+  const [locationFocusKey, setLocationFocusKey] = useState(0);
+  useEffect(() => {
+    setFocusLocation(
+      Boolean(location.position) && pendingLocationFocus.current,
+    );
+    if (location.position) pendingLocationFocus.current = false;
+  }, [location.position]);
+  useEffect(() => {
+    pendingLocationFocus.current = false;
+    setFocusLocation(false);
+  }, [selectedZoneId]);
+  const selectZone = (zone) => {
+    pendingLocationFocus.current = false;
+    setFocusLocation(false);
+    onSelectZone?.(zone);
+  };
   const selectedZone = zones.find((z) => z.id === selectedZoneId);
   const [terrain, setTerrain] = useState(false);
   const [tileError, setTileError] = useState(false);
@@ -298,6 +347,27 @@ export default function TransitMap({
 
   return (
     <>
+      {!compact && (
+        <DeviceLocationControls
+          location={{
+            ...location,
+            locate: () => {
+              pendingLocationFocus.current = true;
+              location.locate();
+            },
+            clear: () => {
+              pendingLocationFocus.current = false;
+              location.clear();
+            },
+          }}
+          zones={validZones}
+          onRecenter={() => {
+            setFocusLocation(true);
+            setLocationFocusKey((key) => key + 1);
+          }}
+          onSelectZone={selectZone}
+        />
+      )}
       {!compact && (
         <div className="map-insight-toolbar">
           <span>Planning layers</span>
@@ -352,6 +422,8 @@ export default function TransitMap({
               resetKey={resetKey}
               selectedZoneId={selectedZoneId}
               destinationsEnabled={destinationsEnabled}
+              locationFocus={focusLocation ? location.position : null}
+              locationFocusKey={locationFocusKey}
             />
             {satellite ? (
               <TileLayer
@@ -389,7 +461,7 @@ export default function TransitMap({
                     fillOpacity: 0.25,
                     dashArray: "4 4",
                   }}
-                  eventHandlers={{ click: () => onSelectZone?.(zone) }}
+                  eventHandlers={{ click: () => selectZone(zone) }}
                 >
                   <Tooltip sticky className="terrain-tooltip">
                     Simulated terrain difficulty:{" "}
@@ -440,9 +512,12 @@ export default function TransitMap({
                 compact={compact}
                 selected={selectedZoneId === zone.id}
                 youthMode={youthMode}
-                onSelectZone={onSelectZone}
+                onSelectZone={selectZone}
               />
             ))}
+            {!compact && location.position && (
+              <DeviceLocationMarker position={location.position} />
+            )}
           </MapContainer>
         </div>
 
@@ -528,14 +603,18 @@ export default function TransitMap({
         <button
           type="button"
           className="map-reset-control"
-          onClick={() => setResetKey((value) => value + 1)}
+          onClick={() => {
+            pendingLocationFocus.current = false;
+            setFocusLocation(false);
+            setResetKey((value) => value + 1);
+          }}
           aria-label="Reset map view"
           title="Reset map view"
         >
           <Expand size={16} aria-hidden="true" />
         </button>
         <span className="map-sample-label">Sample data</span>
-        {!validZones.length && (
+        {!validZones.length && !location.position && (
           <div className="map-empty-message">
             <strong>No zones match these filters</strong>
             <span>Try a different severity or region.</span>

@@ -410,3 +410,125 @@
 .transit-map-shell:not(.is-satellite) .leaflet-tile {
   filter: saturate(0.38);
 }
+
+.device-location-controls {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  background: #f3f7fc;
+  border-bottom: 1px solid #dbe5ef;
+}
+.device-location-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.device-location-controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid #d3dfeb;
+  border-radius: 6px;
+  background: white;
+  padding: 9px 10px;
+  color: #365a7a;
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+.device-location-controls button:hover {
+  background: #e7eff8;
+}
+.device-location-controls button:focus-visible {
+  outline: 3px solid #5d94ed;
+  outline-offset: 2px;
+}
+.device-location-controls .device-locate-button {
+  background: #285d94;
+  color: white;
+  border-color: #285d94;
+  font-weight: 600;
+}
+.device-location-controls .device-locate-button:hover {
+  background: #214f7d;
+}
+.device-location-controls button:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+.device-location-copy {
+  min-width: 0;
+  flex: 1;
+}
+.device-location-copy p {
+  margin: 0 0 4px;
+  font-size: 12px;
+  color: #375c7c;
+  line-height: 1.5;
+}
+.device-location-copy small {
+  display: block;
+  color: #5a6f82;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.device-location-copy .location-error {
+  color: #9c493a;
+}
+.nearest-sample-zone {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  padding-top: 9px;
+  margin-top: 8px;
+  border-top: 1px solid #dbe5ef;
+  color: #375c7c;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.nearest-sample-zone button {
+  font-size: 10px;
+  padding: 5px 8px;
+}
+.nearest-sample-zone small {
+  flex-basis: 100%;
+}
+.device-location-marker {
+  filter: drop-shadow(0 1px 4px #174c9f66);
+}
+.device-location-marker:focus {
+  outline: none;
+  stroke: #183b6a;
+}
+.location-spinner {
+  animation: location-spin 1s linear infinite;
+}
+@keyframes location-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .location-spinner {
+    animation: none;
+  }
+}
+@media (max-width: 1100px) {
+  .device-location-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+@media (max-width: 640px) {
+  .device-location-controls {
+    padding: 12px;
+  }
+  .device-location-controls button {
+    min-height: 40px;
+  }
+}

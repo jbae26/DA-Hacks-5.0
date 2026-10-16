@@ -28,6 +28,14 @@ Open the URL printed by Vite, normally `http://127.0.0.1:5173/`. Keep the termin
 
 Reports, planning status, and Youth access service scenarios persist in browser localStorage. A fourth report submission within ten minutes is retained as Filtered for review, not sent to any agency. Storage is local to each origin/browser. The application has no backend or built-in authentication; hosted access controls are separate. Clear this site's browser storage to reset the demo.
 
+## Your location
+
+On **Interactive map**, click **Locate me** and allow the browser's location request. A blue marker shows your device position and a translucent circle shows the reported accuracy radius. Use **Update location**, **Recenter**, or **Clear** as needed. Location access requires HTTPS or localhost and enabled browser/device location permissions; denied access, unavailable positioning, and timeout errors have retry guidance. The feature uses a single position request rather than continuous tracking.
+
+Location stays in component memory while the map is open. It is not written to localStorage, included in CSV exports or citizen reports, or sent to a TSTS backend. Clearing it, leaving the map, or refreshing removes it. Browser geolocation and the selected map tile provider use their own services; loading tiles reveals the viewed map area to OpenStreetMap or Esri. The nearest **visible sample zone** is calculated locally with a great-circle distance to its fictional center. It is not a route distance, transit stop lookup, or a statement about real service near you. All existing planning data remains synthetic.
+
+Browser API reference: [MDN Geolocation.getCurrentPosition](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition).
+
 ## Planning assumptions
 
 The planning cohort is **adolescents ages 12–17**. All population figures are synthetic area-level aggregates from the October 2026 fixture. They contain no individual adolescent, household, or school locations. Zone population, residents with limited transit, residents without reliable transportation, and adolescents overlap; do not add these groups together.
@@ -42,7 +50,7 @@ The Youth access sandbox saves added weekly one-way trips per zone. Its project 
 
 ## Demonstration boundaries
 
-All twelve zones, demographic and service values, destination names, reports, evidence ratings, measures, and terrain grades are fictional. Real counties provide geographic context; populations represent the sample zones, not official county populations. Tribal scenarios do not describe actual tribal services or imply endorsement. Terrain polygons are seeded illustrative patterns; no satellite processing, geospatial measurement, live GTFS, routing, or eligibility determination occurs. Maps and Google Fonts require internet access. The UI retains system-font fallbacks.
+All twelve zones, demographic and service values, destination names, reports, evidence ratings, measures, and terrain grades are fictional. Real counties provide geographic context; populations represent the sample zones, not official county populations. Tribal scenarios do not describe actual tribal services or imply endorsement. Terrain polygons are seeded illustrative patterns; no satellite processing, measured terrain analysis, live GTFS, routing, or eligibility determination occurs. Maps and Google Fonts require internet access. The UI retains system-font fallbacks.
 
 The reference cards distinguish rural service-area eligibility from county population, include the intercity certification exception, identify the Appalachian 3% as a national set-aside, and explain that island or territory status alone does not establish rural ferry eligibility. Consult the linked FTA guidance and current funding notices for an actual application.
 
