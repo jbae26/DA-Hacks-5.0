@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-10-16",
+  "market": "US",
+  "currency": "USD",
+  "note": "Manufacturer product photos saved without generative alteration. Prices are public listing snapshots, not live quotes. Product images may show an earlier external-drawstring version, as disclosed by Cottonique.",
+  "images": [
+    {
+      "file": "clothing-pants-cottonique-women.jpg",
+      "productUrl": "https://cottonique.com/products/womens-drawstring-pants-pockets?variant=47839031034098",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0012/8072/files/2209_MBL_Front_3.jpg?v=1758907938&width=1000",
+      "selection": "Melange Black, size 6",
+      "price": 44,
+      "regularPrice": 55,
+      "contentType": "image/jpeg"
+    },
+    {
+      "file": "clothing-pants-quince.jpg",
+      "productUrl": "https://www.quince.com/women/women-s-100-organic-cotton-gauze-straight-leg-pants?color=black",
+      "imageUrl": "https://images.quince.com/2isLqP05vwswBDp2yIQAXZ/db95640ad8ca54a45b479df5c27f1464/W-PNT-91-BLK_1186_EDITED_1.jpg?h=1250&q=70&reqOrigin=website-ssr&w=1000",
+      "selection": "Black",
+      "price": 39.9,
+      "contentType": "image/jpeg"
+    },
+    {
+      "file": "clothing-pants-cottonique-men.jpg",
+      "productUrl": "https://cottonique.com/products/mens-drawstring-lounge-pants-colored?variant=48029516267762",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0012/8072/files/7700DBL_1.jpg?v=1768170252&width=1000",
+      "selection": "Deep Melange Blue, S/M",
+      "price": 36,
+      "regularPrice": 45,
+      "contentType": "image/jpeg"
+    }
+  ]
+}

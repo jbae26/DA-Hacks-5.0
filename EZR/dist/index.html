@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#254b40" />
+    <meta
+      name="description"
+      content="EZR makes clothing discovery a little easier. Search garments, choose your material preferences, and understand each match. Compare documented retailer listings and open exact product pages."
+    />
+    <title>EZR — Clothing discovery, made personal.</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23254b40'/%3E%3Cpath d='M19 18h28v7H27v7h16v7H27v7h20v7H19z' fill='%23f5f2e9'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./ezr.css?v=retail3" />
+    <script type="module" src="./ezr-app.js?v=retail3"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#search-input">Skip to clothing search</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#home" aria-label="EZR home"
+          >EZR<span class="brand-spark" aria-hidden="true">✳</span></a
+        >
+        <span class="brand-caption"
+          >Clothing discovery,<br />made personal.</span
+        >
+        <div class="header-end">
+          <span class="demo-pill"
+            ><span aria-hidden="true"></span>Retailer listings</span
+          ><a class="about-link" href="#about"
+            >About EZR <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </div>
+    </header>
+    <main id="home">
+      <section class="hero container" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span aria-hidden="true">✳</span> A little more clarity. A little
+            less searching.
+          </p>
+          <h1 id="hero-title">
+            Just the one<br />
+            <em>for you</em>
+          </h1>
+          <p class="hero-description">
+            See clothing materials at a glance. Understand what your skin needs,
+            and discover options easily.
+          </p>
+          <p class="audience-note">
+            Designed with skin sensitivities, including eczema, in mind.
+          </p>
+        </div>
+        <div class="hero-art">
+          <div class="art-orbit" aria-hidden="true"></div>
+          <svg
+            class="hero-shirt"
+            viewBox="0 0 300 300"
+            fill="none"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient
+                id="shirt-shade"
+                x1="80"
+                y1="35"
+                x2="220"
+                y2="250"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#e9eddb" />
+                <stop offset="1" stop-color="#bfcab3" />
+              </linearGradient>
+            </defs>
+            <path
+              d="m105 55 20-9c6 23 44 23 50 0l20 9 62 47-31 45-29-20v123H102V127l-29 20-31-45z"
+              fill="url(#shirt-shade)"
+              stroke="#70836d"
+              stroke-width="1.6"
+            />
+            <path
+              d="M125 46c2 36 48 36 50 0m-69 12 8 51m77-51-8 51M109 240h81M48 103l27 36m176-36-27 36"
+              stroke="#899b7d"
+              stroke-width="2"
+            />
+            <path
+              d="M132 89c-7 38-10 92-5 132m41-133c9 41 12 94 7 130"
+              stroke="#fff"
+              opacity=".24"
+              stroke-width="4"
+            />
+          </svg>
+          <a class="fabric-tag" href="#material-guide" id="materials-link">
+            <span class="small-leaf" aria-hidden="true">↗</span>
+            <span>Start with the fabric.</span>
+          </a>
+          <div class="art-footnote">Original garment sketch</div>
+        </div>
+      </section>
+      <section
+        class="finder container"
+        id="finder"
+        aria-labelledby="finder-title"
+      >
+        <div class="search-panel">
+          <div class="search-heading">
+            <h2 id="finder-title">What would you like to shop for today?</h2>
+            <span>US · USD</span>
+          </div>
+          <form id="search-form" role="search">
+            <label class="sr-only" for="search-input">Search clothing</label>
+            <div class="search-field">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+              >
+                <circle cx="10.5" cy="10.5" r="6.5" />
+                <path d="m16 16 5 5" /></svg
+              ><input
+                id="search-input"
+                type="search"
+                name="query"
+                autocomplete="off"
+                maxlength="160"
+                placeholder="Search clothing or a retailer…"
+              /><button
+                id="clear-search"
+                type="button"
+                class="icon-button"
+                aria-label="Clear search"
+                hidden
+              >
+                ×</button
+              ><button class="button primary" type="submit">
+                Search <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </form>
+          <div class="search-examples">
+            <span>Try a search</span
+            ><button type="button" data-example="Gap T-shirt">
+              Gap T-shirt <span aria-hidden="true">↗</span></button
+            ><button type="button" data-example="cotton pants">
+              Cotton pants <span aria-hidden="true">↗</span></button
+            ><button type="button" data-example="underwear">
+              Everyday underwear <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <div class="preferences-heading">
+            <h3>Material preferences <span>Optional</span></h3>
+            <button class="text-button" id="reset-filters" type="button">
+              Reset all
+            </button>
+          </div>
+          <div class="preference-grid">
+            <div class="preference-field prefer-field">
+              <div class="preference-label">
+                <label for="prefer-material">Prefer</label
+                ><span>Rank higher</span>
+              </div>
+              <select id="prefer-material">
+                <option value="">Add a material…</option>
+              </select>
+              <div
+                id="prefer-chips"
+                class="selection-chips"
+                aria-label="Preferred materials"
+              ></div>
+              <p>More of these fibers moves a match up your list.</p>
+            </div>
+            <div class="preference-field avoid-field">
+              <div class="preference-label">
+                <label for="avoid-material">Avoid</label
+                ><span>Strict exclusion</span>
+              </div>
+              <select id="avoid-material">
+                <option value="">Add a material…</option>
+              </select>
+              <div
+                id="avoid-chips"
+                class="selection-chips"
+                aria-label="Avoided materials"
+              ></div>
+              <p>Hide items with these fibers or incomplete fiber details.</p>
+            </div>
+            <div class="preference-field price-field">
+              <div class="preference-label">
+                <label for="max-price">Max. price</label><span>USD</span>
+              </div>
+              <div class="price-input">
+                <span aria-hidden="true">$</span
+                ><input
+                  id="max-price"
+                  type="number"
+                  min="0"
+                  max="100000"
+                  step="any"
+                  inputmode="decimal"
+                  placeholder="No limit"
+                />
+              </div>
+            </div>
+          </div>
+          <p class="scope-note">
+            Prefer ranks known main-fabric percentages. Avoid also checks
+            textile trim fibers. Dyes, finishes and skin compatibility are not
+            assessed.
+          </p>
+          <p
+            id="preference-error"
+            class="validation-message"
+            role="alert"
+            hidden
+          ></p>
+        </div>
+      </section>
+      <section
+        class="results-section container"
+        id="results"
+        aria-labelledby="results-title"
+        hidden
+      >
+        <div id="reference-panel" class="reference-panel" hidden></div>
+        <div class="results-heading">
+          <div>
+            <h2 id="results-title" tabindex="-1">
+              Your search results <span id="result-count"></span>
+            </h2>
+          </div>
+          <div class="sort-field">
+            <label for="sort-order">Sort by</label
+            ><select id="sort-order">
+              <option value="recommended">Best match</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+            </select>
+          </div>
+        </div>
+        <div class="catalog-note">
+          <span class="note-icon" aria-hidden="true">i</span>
+          <p>
+            <strong>Retailer listings.</strong> Prices were checked on October
+            17, 2026. Check the retailer for current prices, sizes and shipping.
+            Images are original garment sketches.
+          </p>
+        </div>
+        <p
+          id="result-status"
+          class="result-status"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
+        <p id="omission-note" class="omission-note" hidden></p>
+        <div
+          id="product-grid"
+          class="product-grid"
+          aria-label="Clothing results"
+        ></div>
+        <div id="empty-state" class="empty-state" hidden></div>
+        <noscript
+          ><p class="empty-state">
+            Enable JavaScript to search the clothing catalog.
+          </p></noscript
+        >
+      </section>
+      <section class="about-section" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <div class="about-intro">
+            <div>
+              <p class="eyebrow">City life and/or Nature life</p>
+              <h2 id="about-title">About EZR</h2>
+            </div>
+            <div>
+              <p>
+                Getting dressed is part of everyday life. For people navigating
+                skin sensitivities, shopping can mean a lot of extra research.
+                EZR makes clothing details easier to explore in one place.
+              </p>
+              <p>
+                We connect the city wardrobe with an understanding of its
+                materials, using technology to make personal choices more
+                informed.
+              </p>
+            </div>
+          </div>
+          <div class="about-steps">
+            <article>
+              <span>01 / Discover</span>
+              <h3>Start with what you need.</h3>
+              <p>
+                Search ordinary words. Choose materials you prefer or want to
+                avoid, without a long questionnaire.
+              </p>
+            </article>
+            <article>
+              <span>02 / Understand</span>
+              <h3>Know why it appears.</h3>
+              <p>
+                Matches come from product fields and your choices. Unknown
+                information stays visible.
+              </p>
+            </article>
+            <article>
+              <span>03 / Explore</span>
+              <h3>Keep your preferences.</h3>
+              <p>
+                Find similar garments in the same category. Your material
+                exclusions stay in place.
+              </p>
+            </article>
+          </div>
+          <details class="material-guide" id="material-guide">
+            <summary>
+              Learn about materials <span aria-hidden="true">+</span>
+            </summary>
+            <div class="guide-content">
+              <p>
+                Material names describe fibers, not a guarantee about how a
+                finished garment will feel on your skin. Natural origin alone
+                does not establish suitability or overall environmental impact.
+              </p>
+              <div class="guide-columns">
+                <div>
+                  <h3>Natural fibers</h3>
+                  <p>
+                    Cotton, linen, hemp, wool and silk. The fiber source is one
+                    part of a garment’s story.
+                  </p>
+                </div>
+                <div>
+                  <h3>Processed fibers</h3>
+                  <p>
+                    Viscose, modal and lyocell. These fibers are manufactured
+                    through processing cellulose.
+                  </p>
+                </div>
+                <div>
+                  <h3>Synthetic fibers</h3>
+                  <p>
+                    Polyester, nylon and elastane. Blends combine fibers, so
+                    check each percentage and the trims.
+                  </p>
+                </div>
+              </div>
+              <p class="muted">
+                EZR uses the recorded composition. It does not infer softness,
+                stretch, breathability or skin compatibility from an
+                illustration.
+              </p>
+            </div>
+          </details>
+          <div class="disclaimer" id="disclaimer">
+            <div class="disclaimer-heading">
+              <span class="note-icon" aria-hidden="true">i</span>
+              <h3><strong>Caution: Not medical advice</strong></h3>
+            </div>
+            <p>
+              EZR helps you discover clothing based on product information and
+              preferences you select. It does not diagnose eczema, identify your
+              medical triggers, guarantee skin compatibility, or medically
+              certify garments. Individual sensitivities vary. Verify product
+              details with the retailer and consult a qualified healthcare
+              professional for personalized medical advice.
+            </p>
+            <p>
+              Products are sold and shipped by the linked retailers. Prices
+              exclude tax and shipping; offers may have conditions. Check the
+              retailer for current availability and returns. Garment sketches
+              are original artwork; product photos are available on the
+              retailer’s page.
+            </p>
+            <p>
+              <strong>Your choices stay here.</strong> Searches and preferences
+              are kept in this page’s memory and reset on reload. Only dismissal
+              of the introductory notice is saved in this browser. There is no
+              login, symptom questionnaire or external analysis service.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer container">
+      <a class="brand" href="#home" aria-label="EZR home"
+        >EZR<span class="brand-spark" aria-hidden="true">✳</span></a
+      >
+      <span>United States · USD</span
+      ><button id="show-notice" class="text-button" type="button">
+        Discovery notice
+      </button>
+    </footer>
+    <aside
+      id="retailer-notice"
+      class="retailer-notice"
+      role="region"
+      aria-label="Shopping with retailers"
+      hidden
+    >
+      <div class="notice-content">
+        <span class="notice-mark" aria-hidden="true">✳</span>
+        <div>
+          <strong>Shop directly with the retailer.</strong>
+          <p>
+            Shop for this product opens the exact retailer listing. Retailers
+            handle purchases and shipping. Prices and availability can change.
+            <a href="#disclaimer">Read our approach</a>
+          </p>
+          <p id="notice-storage-message" role="status" hidden></p>
+        </div>
+        <button id="dismiss-notice" class="button primary" type="button">
+          Got it <span aria-hidden="true">✓</span>
+        </button>
+      </div>
+    </aside>
+    <dialog id="detail-dialog" aria-labelledby="detail-title">
+      <button
+        type="button"
+        id="close-details"
+        class="close-dialog"
+        aria-label="Close clothing details"
+      >
+        ×
+      </button>
+      <div id="detail-content"></div>
+    </dialog>
+  </body>
+</html>

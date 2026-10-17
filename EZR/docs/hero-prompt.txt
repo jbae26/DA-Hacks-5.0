@@ -1,0 +1,19 @@
+Rooted hero image provenance
+Generated 2026-10-16 using built-in image_gen (default built-in tool mode).
+Use case: photorealistic-natural
+Original: /Users/yingzheqin/.codex/generated_images/01a146d5-2ce1-71e3-a7b3-bfa94e480c35/exec-13089e41-f222-4190-918b-633c8f6e96c9.png
+Project asset: dist/assets/hero-still-life.png
+Web optimized format conversion: dist/assets/hero-still-life.jpg (sips JPEG quality 85)
+This generated editorial still life is illustrative, not a photograph of a catalog product. Product materials must be verified separately; visual appearance does not establish material composition.
+Inspected result: all requested objects present, no text/logos/people, landscape 1536x1024.
+
+Final prompt:
+Use case: photorealistic-natural
+Asset type: editorial still-life hero photograph for Rooted, a website helping people compare everyday natural-material alternatives.
+Primary request: A beautiful high-end product still life showing a bamboo toothbrush with pale bristles, a folded oatmeal-colored woven cotton cloth, a clear reusable glass water bottle with a bamboo screw cap, a small natural loofah, and an ivory ceramic dish holding an unbranded pale soap bar. A single small rosemary twig rests naturally beside the arrangement.
+Scene/backdrop: Airy warm off-white tabletop and seamless off-white background, with very subtle sage-green undertones.
+Composition/framing: Landscape 3:2 composition; balanced centered sculptural grouping, the glass bottle tallest at the rear, objects fully visible with generous clean breathing room. Three-quarter view just above tabletop level. This photograph occupies the right half of a webpage hero; no text space is needed within the photograph.
+Lighting/mood: Soft natural window light from upper left, inviting quiet morning mood, delicate believable shadows, premium magazine product photography.
+Materials/textures: Beautifully resolved bamboo grain, cotton weave, loofah fibers, glazed ceramic and subtle glass reflections; restrained cream, oatmeal, warm wood and sage palette.
+Constraints: Exactly these everyday objects, no people or hands, no packaging, no text, no logos, no watermark, no border. Illustrative natural-material editorial photography, not an exact depiction of a purchasable branded product.
+

@@ -1,0 +1,38 @@
+[
+  {
+    "file": "rooted/dist/assets/eczema-vanicream-cream.png",
+    "source": "https://www.ulta.com/p/moisturizing-cream-with-pump-sensitive-skin-pimprod2042406?sku=2619667",
+    "imageUrl": "https://media.ulta.com/i/ulta/2619667?w=500&h=500",
+    "checkedAt": "2026-10-16"
+  },
+  {
+    "file": "rooted/dist/assets/eczema-vanicream-daily.png",
+    "source": "https://www.ulta.com/p/daily-facial-moisturizer-with-hyaluronic-acid-ceramides-pimprod2042403?sku=2619671",
+    "imageUrl": "https://media.ulta.com/i/ulta/2619671?w=500&h=500",
+    "checkedAt": "2026-10-16"
+  },
+  {
+    "file": "rooted/dist/assets/eczema-vanicream-cleanser.png",
+    "source": "https://www.ulta.com/p/gentle-facial-cleanser-sensitive-skin-pimprod2042401?sku=2619669",
+    "imageUrl": "https://media.ulta.com/i/ulta/2619669?w=500&h=500",
+    "checkedAt": "2026-10-16"
+  },
+  {
+    "file": "rooted/dist/assets/eczema-cerave-cream.png",
+    "source": "https://www.ulta.com/p/moisturizing-cream-body-face-moisturizer-xlsImpprod3530069?sku=2541604",
+    "imageUrl": "https://media.ulta.com/i/ulta/2541604?w=500&h=500",
+    "checkedAt": "2026-10-16"
+  },
+  {
+    "file": "rooted/dist/assets/eczema-cerave-cleanser.png",
+    "source": "https://www.ulta.com/p/hydrating-facial-cleanser-xlsImpprod4190255?sku=2559841",
+    "imageUrl": "https://media.ulta.com/i/ulta/2559841?w=500&h=500",
+    "checkedAt": "2026-10-16"
+  },
+  {
+    "file": "rooted/dist/assets/eczema-cetaphil-cleanser.png",
+    "source": "https://www.ulta.com/p/gentle-skin-cleanser-face-wash-sensitive-skin-pimprod2028662",
+    "imageUrl": "https://media.ulta.com/i/ulta/2586968?w=500&h=500",
+    "checkedAt": "2026-10-16"
+  }
+]

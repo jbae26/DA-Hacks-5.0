@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-16",
+  "note": "Authentic public catalog photography, not AI-generated. Product facts and prices are snapshots. Photos are not evidence of fiber or allergen content.",
+  "images": [
+    {
+      "file": "clothing-underwear-cottonique.jpg",
+      "sourcePage": "https://cottonique.com/products/latex-free-mens-drawstring-loose-boxer-shorts-2-pack",
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0012/8072/products/IMG_5723.jpg?v=1761536784&width=800"
+    },
+    {
+      "file": "clothing-underwear-pact.jpg",
+      "sourcePage": "https://www.target.com/p/-/A-1009080710",
+      "sourceImage": "https://target.scene7.com/is/image/Target/GUEST_8b446c50-3627-498f-91c7-ea7cdabfd9f7?fmt=pjpeg&hei=800&wid=800"
+    },
+    {
+      "file": "clothing-underwear-hanes.jpg",
+      "sourcePage": "https://www.target.com/p/hanes-women-s-6pk-pure-comfort-organic-cotton-briefs-assorted/-/A-79521878",
+      "sourceImage": "https://target.scene7.com/is/image/Target/GUEST_eb35d365-9ec0-4acf-ab59-173f58d54605?fmt=pjpeg&hei=800&wid=800"
+    }
+  ]
+}
